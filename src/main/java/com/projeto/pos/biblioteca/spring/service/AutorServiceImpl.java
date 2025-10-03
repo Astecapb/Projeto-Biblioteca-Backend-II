@@ -37,8 +37,8 @@ public class AutorServiceImpl implements AutorService {
 
         Autor entity = Autor.builder()
                 .nome(dto.getNome())
-                .email(dto.getEmail())
-                .cpf(dto.getCpf())
+                //.email(dto.getEmail())
+               // .cpf(dto.getCpf())
                 .build();
 
         Autor saved = repository.save(entity);
