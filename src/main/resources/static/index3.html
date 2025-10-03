@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteca CRUD</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<h1>Gerenciamento da Biblioteca</h1>
+<nav>
+    <button onclick="mostrar('autores')">Autores</button>
+    <button onclick="mostrar('livros')">Livros</button>
+    <button onclick="mostrar('exemplares')">Exemplares</button>
+</nav>
+
+<section id="autores" class="painel">   <h2>Autores</h2>   <div id="lista-autores"></div>   </section>
+<section id="livros"  class="painel">   <h2>Livros</h2>    <div id="lista-livros"></div>    </section>
+<section id="exemplares" class="painel"><h2>Exemplares</h2><div id="lista-exemplares"></div></section>
+
+<script src="js/autor.js"></script>
+<script src="js/livro.js"></script>
+<script src="js/exemplar.js"></script>
+<script>
+    function mostrar(secao){
+        document.querySelectorAll('.painel').forEach(p=>p.style.display='none');
+        document.getElementById(secao).style.display='block';
+        if(secao==='autores')   carregarAutores();
+        if(secao==='livros')    carregarLivros();
+        if(secao==='exemplares')carregarExemplares();
+    }
+    mostrar('autores');
+</script>
+</body>
+</html>

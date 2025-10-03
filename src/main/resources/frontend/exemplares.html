@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplares</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container py-4">
+  <h2>Exemplares</h2>
+
+  <form id="exemplarForm" class="row g-3 mb-3">
+    <div class="col">
+      <input type="text" id="codigo" class="form-control" placeholder="Código" required>
+    </div>
+    <div class="col">
+      <select id="status" class="form-select">
+        <option value="DISPONIVEL">Disponível</option>
+        <option value="EMPRESTADO">Emprestado</option>
+        <option value="RESERVADO">Reservado</option>
+      </select>
+    </div>
+    <div class="col">
+      <input type="number" id="livroId" class="form-control" placeholder="ID Livro" required>
+    </div>
+    <div class="col">
+      <button type="submit" class="btn btn-primary">Adicionar</button>
+    </div>
+  </form>
+
+  <table class="table table-bordered" id="exemplaresTable">
+    <thead>
+      <tr><th>ID</th><th>Código</th><th>Status</th><th>LivroId</th><th>Ações</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <a href="index.html" class="btn btn-secondary">Voltar</a>
+  <script src="js/exemplares.js"></script>
+</body>
+</html>

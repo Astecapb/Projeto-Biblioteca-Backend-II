@@ -1,0 +1,71 @@
+
+
+ //Buscar livros por título: 
+ ###
+GET /api/livros?titulo=casmurro
+
+###
+curl -X POST http://localhost:8080/api/emprestimos \
+  -H "Content-Type: application/json" \
+  -d '{
+        "usuarioId": "550e8400-e29b-41d4-a716-446655440000",
+        "exemplarId": "660e8400-e29b-41d4-a716-446655440001",
+        "dataHoraEmprestimo": "2025-10-01T19:35:00",
+        "status": "ATIVO"
+      }'
+
+
+###
+curl -X POST http://localhost:8080/api/autores \
+ -H "Content-Type: application/json" \
+ -d '{"nome":"Artur Freitas Palmeira"}'
+
+###
+//*Criar livro (passando ids de autores):*
+
+curl -X POST http://localhost:8080/api/livros \
+ -H "Content-Type: application/json" \
+ -d '{"titulo":"Five nights at Freddys","isbn":"123456","editora":"ABC","ano":2022, "autoresIds":[1]}'
+
+// Criar exemplar:
+###
+
+curl -X POST http://localhost:8080/api/exemplares \
+ -H "Content-Type: application/json" \
+ -d '{"codigo":"EX-006", "status":"RESERVADO", "livroId":6}'
+
+
+# 1. busca por título (paginada)
+###
+echo "=== 1. BUSCA POR TÍTULO (paginada) ==="
+curl -s "http://localhost:8080/api/livros?titulo=harry&page=0&size=5" \
+  -H "Accept: application/json" \
+  -w "\nHTTP: %{http_code}\n"
+
+# 2. contagem de exemplares (todos os status)
+###
+echo "=== 2. CONTAGEM TOTAL DE EXEMPLARES ==="
+curl -s "http://localhost:8080/api/livros/42/exemplares/count" \
+  -H "Accept: application/json" \
+  -w "\nHTTP: %{http_code}\n"
+
+# 3. filtro único (disponíveis)
+###
+echo "=== 3. FILTRO ÚNICO (disponíveis) ==="
+curl -s "http://localhost:8080/api/livros/42/exemplares/count?status=DISPONIVEL" \
+  -H "Accept: application/json" \
+  -w "\nHTTP: %{http_code}\n"
+
+###
+# busca por título (paginada)
+curl "http://localhost:8080/api/livros?titulo=harry&page=0&size=5"
+
+###
+curl -X POST http://localhost:8080/api/emprestimos \
+  -H "Content-Type: application/json" \
+  -d '{
+        "usuarioId": "550e8400-e29b-41d4-a716-446655440000",
+        "exemplarId": "660e8400-e29b-41d4-a716-446655440001",
+        "dataHoraEmprestimo": "2025-10-01T19:35:00",
+        "status": "ATIVO"
+      }'
