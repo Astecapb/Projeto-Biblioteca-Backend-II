@@ -9,19 +9,22 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.projeto.pos.biblioteca.spring.model.ExemplarStatus;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
-@Service
+@Service // <<<<< ESSENCIAL
 @RequiredArgsConstructor
+@Transactional
 public class ExemplarServiceImpl implements ExemplarService {
 
     private final ExemplarRepository exemplarRepository;
     private final LivroRepository livroRepository;
 
     @Override
-    @Transactional
     public ExemplarDTO create(ExemplarDTO dto) {
         Livro livro = livroRepository.findById(dto.getLivroId())
                 .orElseThrow(() -> new EntityNotFoundException("Livro não encontrado"));
@@ -29,6 +32,7 @@ public class ExemplarServiceImpl implements ExemplarService {
         ExemplarLivro exemplar = ExemplarLivro.builder()
                 .codigo(dto.getCodigo())
                 .status(dto.getStatus())
+                .statusConservacao(dto.getStatusConservacao())
                 .livro(livro)
                 .build();
 
@@ -36,13 +40,13 @@ public class ExemplarServiceImpl implements ExemplarService {
     }
 
     @Override
-    @Transactional
     public ExemplarDTO update(UUID id, ExemplarDTO dto) {
         ExemplarLivro exemplar = exemplarRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Exemplar não encontrado"));
 
         exemplar.setCodigo(dto.getCodigo());
         exemplar.setStatus(dto.getStatus());
+        exemplar.setStatusConservacao(dto.getStatusConservacao());
 
         if (!exemplar.getLivro().getId().equals(dto.getLivroId())) {
             Livro livro = livroRepository.findById(dto.getLivroId())
@@ -54,7 +58,6 @@ public class ExemplarServiceImpl implements ExemplarService {
     }
 
     @Override
-    @Transactional
     public void delete(UUID id) {
         if (!exemplarRepository.existsById(id)) {
             throw new EntityNotFoundException("Exemplar não encontrado");
@@ -86,5 +89,15 @@ public class ExemplarServiceImpl implements ExemplarService {
                 .stream()
                 .map(ExemplarDTO::fromEntity)
                 .toList();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Map<String, Long> countByStatus(UUID livroId) {
+        return exemplarRepository.countByStatusAndLivroId(livroId)
+                .stream()
+                .collect(Collectors.toMap(
+                        arr -> ((ExemplarStatus) arr[0]).name(),
+                        arr -> (Long) arr[1]));
     }
 }

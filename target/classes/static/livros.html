@@ -25,6 +25,7 @@
         <th>ID</th>
         <th>Título</th>
         <th>Ano</th>
+        <th>Conservação</th>
         <th>Ações</th>
       </tr>
     </thead>
@@ -62,14 +63,14 @@
             </div>
              <!-- ✅ CAMPO CONSERVAÇÃO – NOVO -->
           <div class="mb-3">
-            <label class="form-label">Conservação</label>
-            <select class="form-select" id="statusConservacao">
-              <option>NOVO</option>
-              <option>BOM</option>
-              <option>REGULAR</option>
-            </select>
-          </div>
-          </form>
+  <label for="statusConservacao" class="form-label">Conservação</label>
+  <select id="statusConservacao" class="form-select">
+    <option value="NOVO">NOVO</option>
+    <option value="BOM">BOM</option>
+    <option value="REGULAR">REGULAR</option>
+  </select>
+</div>
+</form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

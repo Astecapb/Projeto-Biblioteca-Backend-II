@@ -1,8 +1,8 @@
 package com.projeto.pos.biblioteca.spring.controller;
 
-import java.util.List;
-import java.util.UUID;
 
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.projeto.pos.biblioteca.spring.dto.ExemplarDTO;
 import com.projeto.pos.biblioteca.spring.service.ExemplarService;
 
+import java.util.List;
+import java.util.UUID;
+
 @RestController
-@RequestMapping("/exemplares")
+@RequestMapping("/api/exemplares")
 public class ExemplarController {
 
     private final ExemplarService exemplarService;
@@ -49,4 +52,15 @@ public class ExemplarController {
     public void delete(@PathVariable UUID id) {
         exemplarService.delete(id);
     }
+/* ---------- ENDPOINTS FRONT (JÁ EXISTENTES) ---------- */
+    @GetMapping("/livro/{livroId}")
+    public ResponseEntity<List<ExemplarDTO>> listarPorLivro(@PathVariable UUID livroId) {
+        return ResponseEntity.ok(exemplarService.findByLivroId(livroId));
+    }
+
+    @GetMapping("/livro/{livroId}/count")
+    public ResponseEntity<Object> contarPorStatus(@PathVariable UUID livroId) {
+        return ResponseEntity.ok(exemplarService.countByStatus(livroId));
+    }
+
 }

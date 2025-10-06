@@ -31,8 +31,8 @@ public class AutorDTO {
         return AutorDTO.builder()
                 .id(autor.getId())
                 .nome(autor.getNome())
-               // .cpf(autor.getCpf())
-               // .email(autor.getEmail())
+                .cpf(autor.getCpf())
+                .email(autor.getEmail())
                 .build();
     }
 
@@ -41,8 +41,8 @@ public class AutorDTO {
         Autor autor = new Autor();
         autor.setId(this.id);
         autor.setNome(this.nome);
-        //autor.setCpf(this.cpf);
-        //autor.setEmail(this.email);
+        autor.setCpf(this.cpf);
+        autor.setEmail(this.email);
         return autor;
     }
 }

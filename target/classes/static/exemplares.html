@@ -18,6 +18,7 @@
         <th>ID</th>
         <th>Código</th>
         <th>Status</th>
+        <th>Conservação</th>
         <th>Livro-ID</th>
         <th>Ações</th>
       </tr>
@@ -50,6 +51,16 @@
                 <option>DISPONIVEL</option>
                 <option>EMPRESTADO</option>
                 <option>RESERVADO</option>
+              </select>
+            </div>
+
+            <!-- NOVO CAMPO -->
+            <div class="mb-3">
+              <label class="form-label">Conservação</label>
+              <select class="form-select" id="statusConservacao">
+                <option value="NOVO">NOVO</option>
+                <option value="BOM" selected>BOM</option>
+                <option value="REGULAR">REGULAR</option>
               </select>
             </div>
 

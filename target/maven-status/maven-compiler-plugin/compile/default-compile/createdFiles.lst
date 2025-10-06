@@ -9,6 +9,7 @@ com\projeto\pos\biblioteca\spring\model\Emprestimo.class
 com\projeto\pos\biblioteca\spring\model\Autor.class
 com\projeto\pos\biblioteca\spring\repository\ExemplarRepository.class
 com\projeto\pos\biblioteca\spring\service\LivroService.class
+com\projeto\pos\biblioteca\spring\service\ExemplarServiceImpl.class
 com\projeto\pos\biblioteca\spring\dto\NotNull.class
 com\projeto\pos\biblioteca\spring\config\CorsConfig.class
 com\projeto\pos\biblioteca\spring\model\ExemplarLivro.class
@@ -25,7 +26,9 @@ com\projeto\pos\biblioteca\spring\dto\EmprestimoDTO$EmprestimoDTOBuilder.class
 com\projeto\pos\biblioteca\spring\controller\UsuarioService.class
 com\projeto\pos\biblioteca\spring\dto\UsuarioDTO.class
 com\projeto\pos\biblioteca\spring\controller\LivroController.class
+com\projeto\pos\biblioteca\spring\exception\ErrorResponse.class
 com\projeto\pos\biblioteca\spring\model\Livro.class
+com\projeto\pos\biblioteca\spring\service\LivroServiceImpl.class
 com\projeto\pos\biblioteca\spring\exception\ResourceNotFoundException.class
 com\projeto\pos\biblioteca\spring\model\ExemplarStatus.class
 com\projeto\pos\biblioteca\spring\controller\AutorController.class
@@ -33,9 +36,11 @@ com\projeto\pos\biblioteca\spring\controller\EmprestimoController.class
 com\projeto\pos\biblioteca\spring\model\StatusConservacao.class
 com\projeto\pos\biblioteca\spring\exception\GlobalExceptionHandler.class
 com\projeto\pos\biblioteca\spring\dto\AutorDTO$AutorDTOBuilder.class
+com\projeto\pos\biblioteca\spring\dto\ExemplarLivroDTO.class
 com\projeto\pos\biblioteca\spring\repository\AutorRepository.class
 com\projeto\pos\biblioteca\spring\dto\LivroDTO.class
 com\projeto\pos\biblioteca\spring\model\Emprestimo$EmprestimoBuilder.class
+com\projeto\pos\biblioteca\spring\service\AutorServiceImpl.class
 com\projeto\pos\biblioteca\spring\controller\ExemplarController.class
 com\projeto\pos\biblioteca\spring\repository\LivroRepository.class
 com\projeto\pos\biblioteca\spring\dto\ExemplarDTO.class

@@ -11,6 +11,8 @@ import lombok.*;
 @Entity
 @Data
 @Builder
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "exemplar_livro")
@@ -25,16 +27,17 @@ public class ExemplarLivro {
     @Column(nullable = false, unique = true)
     private String codigo;
 
+    @Builder.Default
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ExemplarStatus status = ExemplarStatus.DISPONIVEL;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status_conservacao")
+    private StatusConservacao statusConservacao;
 
     // referência para o livro
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "livro_id", nullable = false)
     private Livro livro;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status_conservacao")
-    private StatusConservacao statusConservacao;
 }

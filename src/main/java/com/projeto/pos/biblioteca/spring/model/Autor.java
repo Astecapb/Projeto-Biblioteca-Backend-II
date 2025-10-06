@@ -29,17 +29,25 @@ public class Autor {
     @Column(nullable = false)
     private String nome;
 
+     @Column(nullable = false, unique = true)
+    private String cpf;
+
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    
+
     // equals/hashCode baseados em id
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Autor)) return false;
         Autor autor = (Autor) o;
-        return Objects.equals(getId(), autor.getId());
+        return Objects.equals(id, autor.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return Objects.hash(id);
     }
 }

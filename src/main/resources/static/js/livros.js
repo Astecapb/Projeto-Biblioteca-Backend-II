@@ -37,13 +37,19 @@ function abrirEditar(id, titulo, ano, isbn, editora) {
   modalLivro.show();
 }
 
-const conservacao = document.getElementById('statusConservacao').value;
+function limparForm() {
+  ['livroId','titulo','ano','isbn','editora'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+}
+
+/*const conservacao = document.getElementById('statusConservacao').value;
 const dto = {
   codigo: codigo,
   status: status,
   livroId: livroId,
   statusConservacao: conservacao   // novo campo
-};
+}; */
 
 /* ---------- 3. SALVAR (CREATE / UPDATE) ---------- */
 function salvarLivro() {
@@ -58,9 +64,8 @@ function salvarLivro() {
     titulo,
     isbn,
     editora,
-    ano,
-    autoresIds: []   // preencha quando tiver select de autores
-  };
+    ano,autoresIds: []   // preencha quando tiver select de autores
+  }; 
 
   console.log('JSON enviado:', dto);
 

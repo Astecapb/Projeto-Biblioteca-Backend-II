@@ -9,6 +9,9 @@ import com.projeto.pos.biblioteca.spring.model.Autor;
 
 public interface AutorRepository extends JpaRepository<Autor, UUID> {
 
+    boolean existsByCpf(String cpf);
+    boolean existsByEmail(String email);
+
     // Buscar autor por nome (ignora maiúsculas/minúsculas)
     List<Autor> findByNomeContainingIgnoreCase(String nome);
 }
