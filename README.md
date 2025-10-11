@@ -5,6 +5,8 @@ Assunto: Projeto Pós Graduação BackEnd 2 – 2025 – Segunda Entrega
 
 Assunto: Projeto Pós Graduação BackEnd 2 – 2025 – Segunda Entrega
 
+Grupo formado por: - Artur Freitas Palmeira RGM-42900590 - Geraldo Camilo Valencia RGM-44194153 - Robson Lima Palmeira RGM-44214341
+
 1.Finalizar o desenvolver uma API REST seguindo o diagrama de classes fornecido e atendendo aos requisitos funcionais descritos abaixo.
 
 Requisitos Funcionais
